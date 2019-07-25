@@ -1,0 +1,3 @@
+[settings]
+interval=15
+enabled_metrics=local_io
