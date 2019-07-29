@@ -1,6 +1,6 @@
 ### gmetrics-exporter
 
-Prometheus exporter for GlusterFS metrics from [statedump files](https://docs.gluster.org/en/latest/Troubleshooting/statedump/).
+Prometheus exporter for GlusterFS metrics from [/var/run/gluster/metrics/](https://docs.gluster.org/en/latest/release-notes/4.0.0/#2-monitoring-support).
 
 Inspired and based on [amarts/glustermetrics](https://github.com/amarts/glustermetrics).
 

@@ -12,11 +12,11 @@ from prometheus_client import start_http_server, Counter
 
 METRICS_DIR = '/var/run/gluster/metrics/'
 
-P_OPS_TOTAL = Counter('ops_total', 'operations per translator', ['volume','translator', 'operation'])
-P_FOP_TOTAL = Counter('fop_total', 'total operations', ['volume','translator'])
-P_MD_CACHE_STATUS = Counter('md_cache_status', 'md=cache hit and miss statistics', ['volume_name', 'operation', 'status'])
-P_MD_CACHE_LOOKUP = Counter('md_cache_lookup', 'md-cache lookups statistics', ['volume_name', 'lookup'])
-P_MD_CACHE_INVALIDATIONS_RECEIVED = Counter('md_cache_invalidations_received', 'md-cache invalidations received', ['volume_name', 'operation'])
+P_OPS_TOTAL = Counter('glusterfs_ops_total', 'operations per translator', ['volume','translator', 'operation'])
+P_FOP_TOTAL = Counter('glusterfs_fop_total', 'total operations', ['volume','translator'])
+P_MD_CACHE_STATUS = Counter('glusterfs_md_cache_status', 'md=cache hit and miss statistics', ['volume_name', 'operation', 'status'])
+P_MD_CACHE_LOOKUP = Counter('glusterfs_md_cache_lookup', 'md-cache lookups statistics', ['volume_name', 'lookup'])
+P_MD_CACHE_INVALIDATIONS_RECEIVED = Counter('glusterfs_md_cache_invalidations_received', 'md-cache invalidations received', ['volume_name', 'operation'])
 
 # Available metrics and respective metrics collection functions
 AVAILABLE_METRICS = [
