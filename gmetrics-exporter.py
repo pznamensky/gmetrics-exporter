@@ -160,7 +160,7 @@ def local_io_metrics():
             if r:
                 translator = r.group(1)
                 operation = r.group(2)
-                increment_prometheus_counter(P_OPS_TOTAL.labels(volume, translator, operation), int(all_metrics[k]))
+                increment_prometheus_counter(P_OPS_TOTAL.labels(volume_name, translator, operation), int(all_metrics[k]))
                 continue
 
             # meta-autoload.total.READDIRP.count
@@ -168,21 +168,21 @@ def local_io_metrics():
             if r:
                 translator = r.group(1)
                 operation = r.group(2)
-                increment_prometheus_counter(P_OPS_TOTAL.labels(volume, translator, operation), int(all_metrics[k]))
+                increment_prometheus_counter(P_OPS_TOTAL.labels(volume_name, translator, operation), int(all_metrics[k]))
                 continue
 
             # gl1-client-4.total.fop-count
             r = re.search(volume_name + "\-([a-zA-Z0-9\-]+)\.total\.fop\-count", k)
             if r:
                 translator = r.group(1)
-                increment_prometheus_counter(P_FOP_TOTAL.labels(volume, translator), int(all_metrics[k]))
+                increment_prometheus_counter(P_FOP_TOTAL.labels(volume_name, translator), int(all_metrics[k]))
                 continue
 
             # meta-autoload.total.fop-count
             r = re.search("([a-zA-Z0-9\-]+)\.total\.fop\-count", k)
             if r:
                 translator = r.group(1)
-                increment_prometheus_counter(P_FOP_TOTAL.labels(volume, translator), int(all_metrics[k]))
+                increment_prometheus_counter(P_FOP_TOTAL.labels(volume_name, translator), int(all_metrics[k]))
                 continue
 
             # gl1-md-cache.xattr_cache_miss_count
@@ -190,21 +190,21 @@ def local_io_metrics():
             if r:
                 operation = r.group(1)
                 status = r.group(2)
-                increment_prometheus_counter(P_MD_CACHE_STATUS.labels(volume, operation, status), int(all_metrics[k]))
+                increment_prometheus_counter(P_MD_CACHE_STATUS.labels(volume_name, operation, status), int(all_metrics[k]))
                 continue
 
             # gl1-md-cache.negative_lookup_count
             r = re.search(volume_name + "\-md\-cache\.([a-zA-Z0-9\_]+_lookup)_count", k)
             if r:
                 lookup_type = r.group(1)
-                increment_prometheus_counter(P_MD_CACHE_LOOKUP.labels(volume, lookup_type), int(all_metrics[k]))
+                increment_prometheus_counter(P_MD_CACHE_LOOKUP.labels(volume_name, lookup_type), int(all_metrics[k]))
                 continue
 
             # gl1-md-cache.xattr_cache_invalidations_received
             r = re.search(volume_name + "\-md\-cache\.([a-zA-Z0-9\_]+)_cache_invalidations_received", k)
             if r:
                 operation = r.group(1)
-                increment_prometheus_counter(P_MD_CACHE_INVALIDATIONS_RECEIVED.labels(volume, operation), int(all_metrics[k]))
+                increment_prometheus_counter(P_MD_CACHE_INVALIDATIONS_RECEIVED.labels(volume_name, operation), int(all_metrics[k]))
                 continue
 
             # everything else is skipped
