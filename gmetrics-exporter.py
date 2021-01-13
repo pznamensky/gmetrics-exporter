@@ -155,6 +155,10 @@ def local_io_metrics():
 
         # let's find all needed metrics with regular expressions
         for k in all_metrics:
+            # ignore "meta-autoload.total.pending-winds.count" which actually can decreased over time
+            if k == "meta-autoload.total.pending-winds.count":
+                continue
+
             # gl1-client-3.total.GETXATTR.count
             r = re.search(volume_name + "\-([a-zA-Z0-9\-]+)\.total\.([a-zA-Z0-9\-]+)\.count", k)
             if r:
