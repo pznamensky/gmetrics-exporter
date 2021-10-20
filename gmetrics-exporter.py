@@ -237,7 +237,7 @@ def main():
 
     # Create the metrics dir in which all the metrics would be dumped
     try:
-        os.mkdir(METRICS_DIR)
+        os.makedirs(METRICS_DIR)
     except OSError as e:
         if e.errno != errno.EEXIST:
             raise
